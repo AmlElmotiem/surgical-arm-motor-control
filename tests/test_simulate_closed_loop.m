@@ -8,7 +8,7 @@ classdef test_simulate_closed_loop < matlab.unittest.TestCase
             % simulate_closed_loop) against a known, provable formula
             % instead of only against itself.
             p = joint_plant_params();
-            Kp = 0.6;
+            Kp = 8;  % chosen so the closed loop is comfortably underdamped (zeta < 1)
             gains = struct('Kp', Kp, 'Ki', 0, 'Kd', 0);
             target = 1.0;
 
@@ -29,7 +29,7 @@ classdef test_simulate_closed_loop < matlab.unittest.TestCase
         function testWellTunedPidReachesTargetWithNegligibleSteadyStateError(testCase)
             p = joint_plant_params();
             gains = struct('Kp', 5, 'Ki', 2, 'Kd', 0.1);
-            result = simulate_closed_loop(0.5, gains, p);
+            result = simulate_closed_loop(0.5, gains, p, struct('duration', 4));
             m = step_response_metrics(result.t, result.theta, 0.5);
             testCase.verifyLessThan(m.steady_state_error, 0.01);
         end
