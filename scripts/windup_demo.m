@@ -8,8 +8,8 @@ project_root = fileparts(fileparts(mfilename('fullpath')));
 addpath(genpath(project_root));
 
 p = joint_plant_params();
-gains = struct('Kp', 3, 'Ki', 15, 'Kd', 0);
-target = 2.0;  % a large step, deliberately chosen to saturate the 12V actuator
+gains = struct('Kp', 5, 'Ki', 15, 'Kd', 0);
+target = 3.0;  % Kp*target alone (15) exceeds the 12V limit, guaranteeing saturation from t=0
 
 opts_no_aw = struct('anti_windup', false, 'duration', 4);
 opts_aw = struct('anti_windup', true, 'duration', 4);

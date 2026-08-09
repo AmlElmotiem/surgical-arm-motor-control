@@ -9,7 +9,7 @@ p = joint_plant_params();
 gains = struct('Kp', 8, 'Ki', 4, 'Kd', 0.3);
 target = 1.0;  % rad, ~57 degrees
 
-result = simulate_closed_loop(target, gains, p);
+result = simulate_closed_loop(target, gains, p, struct('duration', 4));
 m = step_response_metrics(result.t, result.theta, target);
 
 fprintf('Target: %.3f rad\n', target);

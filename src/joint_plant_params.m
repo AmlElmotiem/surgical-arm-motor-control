@@ -9,3 +9,4 @@ function p = joint_plant_params()
     p.R = 2.0;                % Ohm, motor winding resistance
     p.voltage_limit = 12;     % V, actuator saturation
 end
+ 
