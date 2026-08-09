@@ -45,7 +45,7 @@ finite-time response, not instantly).
 - **`scripts/controller_comparison.m`** — P vs. PI vs. PID on the same
   joint under a constant disturbance torque, with a metrics table.
 
-## What we found (the honest part)
+## What we found 
 
 **The analytical ground-truth test first exposed my own mistake, not a
 code bug.** `testPureProportionalMatchesAnalyticalSecondOrderSystem`
